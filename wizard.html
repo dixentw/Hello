@@ -1,0 +1,54 @@
+<html>
+<head>
+	<title>FluentD Config wizard</title>
+	<script>
+		function goSave(){
+			console.log("clicked");
+			/*
+			window.requestFileSystem  = window.requestFileSystem;
+			window.requestFileSystem(window.PERSISTENT, 500, onInitFs);
+			*/
+			var textFileAsBlob = new Blob(['lalallalala'], {type:'text/plain'});
+			var downloadLink = document.createElement("a");
+			downloadLink.download = 'log.txt';
+			downloadLink.innerHTML = "Download File";
+			if (window.webkitURL != null)
+			{
+				// Chrome allows the link to be clicked
+				// without actually adding it to the DOM.
+				downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
+			}
+			else
+			{
+				// Firefox requires the link to be added to the DOM
+				// before it can be clicked.
+				downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+				downloadLink.onclick = destroyClickedElement;
+				downloadLink.style.display = "none";
+				document.body.appendChild(downloadLink);
+			}
+			downloadLink.click();
+		}
+
+		function onInitFs(fs){
+			console.log("lalala");
+			fs.root.getFile('log.txt', {create: true, exclusive: true}, function(fileEntry){
+				fileEntry.createWriter(function(fw){
+					var bb = new BlobBuilder();
+					bb.append('Meow');
+					fw.write(bb.getBlob('text/plain'));
+				});
+			});
+		}
+	</script>
+</head>
+<body>
+	Source
+	type : <select>
+			<option value='foward'>forward</option>
+			<option value='http'>http</option>
+			</select>
+	port  : <input type="text"></input>
+	<input type='button' onclick='goSave()' value="save"/>
+</body>
+</html>

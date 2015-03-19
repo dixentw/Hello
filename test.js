@@ -8,3 +8,20 @@ process.stdout.write('2\r');
 process.stdout.write('3\r');
 process.stdout.write('4\r');
 process.stdout.write('5\r');
+
+
+
+if(1) {
+	function foo(){
+		return 'a';
+	}
+}else{
+	function foo(){
+		return 'b';
+	}
+}
+
+console.log(foo());
+
+
+
