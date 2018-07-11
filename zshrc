@@ -116,3 +116,7 @@ if [ -f '/Users/yuchang.cheng/Downloads/google-cloud-sdk/completion.zsh.inc' ]; 
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+
+unsetopt inc_append_history
+unsetopt share_history
+
