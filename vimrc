@@ -142,7 +142,7 @@ map tc              :tabclose<CR>
 map vs              :vsplit 
 map gv              :bp<CR>
 map gb              :bn<CR>
-map <c-e>           :Vexplore<CR>
+map <c-e>           :Explore<CR>
 
 nmap <Tab>          v>
 nmap <S-tab>        v<
