@@ -1,0 +1,22 @@
+{
+    "editor.fontSize": 12,
+    "terminal.integrated.fontSize": 12,
+    "terminal.integrated.fontFamily": "Meslo LG M for Powerline",
+    "go.gopath": "/Users/yuchang.cheng/workspace/go",
+    "workbench.editor.enablePreview" : false,
+    "workbench.editor.enablePreviewFromQuickOpen" :false,
+    "editor.minimap.enabled": false,
+    "explorer.openEditors.visible": 0,
+    "extensions.ignoreRecommendations": true,
+    "editor.wordWrap": "on",
+    "workbench.colorTheme": "Solarized Dark",
+    "workbench.startupEditor": "none",
+    "java.errors.incompleteClasspath.severity": "ignore",
+    "JAVA_HOME": "/usr/libexec/java_home",
+    "java.home": "/Library/Java/JavaVirtualMachines/jdk1.8.0_171.jdk/Contents/Home",
+    "jslint.options": {
+        "esversion": 6
+    },
+    "search.location": "panel",
+    "terminal.integrated.scrollback": 4000,
+}
