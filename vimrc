@@ -144,8 +144,8 @@ map gv              :bp<CR>
 map gb              :bn<CR>
 map <c-e>           :Explore<CR>
 
-nmap <Tab>          v>
-nmap <S-tab>        v<
+nmap <Tab>          :bn<CR>
+nmap <S-tab>        :bp<CR>
 nnoremap <A-J>      :m+<CR>==
 nnoremap <A-K>      :m-2<CR>==
 nnoremap <Space>    za
