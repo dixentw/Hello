@@ -18,7 +18,6 @@ export PATH=/usr/local/bin:$PATH:$HOME/bin:$GOBIN:"/Applications/Visual Studio C
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/yuchang.cheng/.oh-my-zsh"
 
-export HOMEBREW_GITHUB_API_TOKEN="f1d18afdcb003bb805369c172e102753f7f80f2a"
 
 export PIPELINE_USE_EXP_LOGIN=true
 
