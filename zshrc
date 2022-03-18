@@ -1,35 +1,59 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block, everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+export DISABLE_UPDATE_PROMPT=true
+
 # If you come from bash you might have to change your $PATH.
-export GOPATH=$HOME/workspace/go
-export GOBIN=$HOME/workspace/go/bin
-export PATH=$PATH:$HOME/bin:/usr/local/bin:$GOBIN:"/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+#export JAVA_HOME=`/usr/libexec/java_home -v "1.8"`
+#export JAVA_HOME=`/usr/libexec/java_home -v "11"`
 
+export PATH=/usr/local/bin:$PATH:$HOME/bin:$GOBIN:"/Applications/Visual Studio Code.app/Contents/Resources/app/bin":$HOME/.krew/bin
+
+#eval "$(jenv init -)"
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/yuchang.cheng/.oh-my-zsh
+export ZSH="/Users/yuchang.cheng/.oh-my-zsh"
 
-# Set name of the theme to load. Optionally, if you set this to "random"
-# it'll load a random theme each time that oh-my-zsh is loaded.
+export HOMEBREW_GITHUB_API_TOKEN="f1d18afdcb003bb805369c172e102753f7f80f2a"
+
+export PIPELINE_USE_EXP_LOGIN=true
+
+
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="agnoster"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
-# Set list of themes to load
-# Setting this variable when ZSH_THEME=random
-# cause zsh load theme from this variable instead of
-# looking in ~/.oh-my-zsh/themes/
-# An empty array have no effect
+POWERLEVEL9K_MODE="awesome-patched"
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
+# If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
 
+# Uncomment the following line to automatically update without prompting.
+# DISABLE_UPDATE_PROMPT="true"
+
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS=true
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -50,19 +74,21 @@ ZSH_THEME="agnoster"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Which plugins would you like to load?
+# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  git
-)
+plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -83,8 +109,11 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
+export LSCOLORS=exfxcxdxbxegedabagacad
+export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+
+eval "$(fasd --init auto)"
+
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -95,28 +124,34 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-autoload -U compinit
-compinit
-
-export LSCOLORS=exfxcxdxbxegedabagacad
-export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-
 alias ls="ls -GF"
 alias gls="gls --color"
 
-zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
-
-eval "$(fasd --init auto)"
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/yuchang.cheng/Downloads/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/yuchang.cheng/Downloads/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/yuchang.cheng/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/yuchang.cheng/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+alias kdev="kubectl --context dev-api -n sn-api"
+alias kpdev="kubectl --context dev-push -n sn-push"
+alias kstg="kubectl --context stg -n sn-api"
+alias kpstg="kubectl --context stg-push -n sn-push"
+alias kprd="kubectl --context prd -n sn-api"
+alias kpprd="kubectl --context prd-push -n sn-push"
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/yuchang.cheng/.sdkman"
+[[ -s "/Users/yuchang.cheng/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/yuchang.cheng/.sdkman/bin/sdkman-init.sh"
+
 unsetopt inc_append_history
 unsetopt share_history
 
+awsemrssh ()
+{
+    cluster=$(aws emr list-clusters --active --profile prd-exp | jq -r -c '.Clusters[] | [.Name, .Id] |@tsv' | peco |awk -F'\t' '{print $2}');
+    echo $cluster;
+    if [ -n "$cluster" ]; then
+        spaas aws ssm start-session -i $(aws emr list-instances --cluster-id ${cluster} --instance-group-types MASTER --profile prd-exp | jq -r -c '.Instances[] | .Ec2InstanceId' | head -1) || true
+    fi
+}
